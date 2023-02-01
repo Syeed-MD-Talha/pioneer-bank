@@ -87,20 +87,22 @@
 
         const depositeBtn = document.getElementById("addDeposite");
         depositeBtn.addEventListener("click", function () {
-            updateSpanTag('currentDeposite', 'depositeAmount')
-            updateSpanTag('currentBalance', 'depositeAmount');
+            depositeAmount = parseFloat(document.getElementById('depositeAmount').value);
+            updateSpanTag('currentDeposite', depositeAmount)
+            updateSpanTag('currentBalance', depositeAmount);
             document.getElementById("depositeAmount").value = "";
         })
 
         function updateSpanTag(id, update) {
             const a = parseFloat(document.getElementById(id).innerText);
-            const b = parseFloat(document.getElementById(update).value);
-            document.getElementById(id).innerText = a + b;
+            document.getElementById(id).innerText = a + update;
         }
 
         const withdrawBtn = document.getElementById('addWithdraw');
         withdrawBtn.addEventListener('click', function () {
-            updateSpanTag('currentWithdraw', 'withdrawAmount')
+            withdrawAmount = parseFloat(document.getElementById('withdrawAmount').value);
+            updateSpanTag('currentWithdraw', withdrawAmount)
+            updateSpanTag('currentBalance', -withdrawAmount);
             document.getElementById('withdrawAmount').value = "";
         })
 
